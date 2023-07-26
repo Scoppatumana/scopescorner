@@ -1,0 +1,93 @@
+*{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+header {
+    background: rgb(2, 58, 2);
+}
+
+.admin-wrapper{
+    height: calc(100% - 66px);
+    position: absolute;
+    top: 66px;
+    width: 100%;
+    display: flex;
+}
+
+.admin-wrapper .left-sidebar{
+    flex: 2;
+    height: 100%;
+    background: rgb(8, 114, 8);
+}
+
+.admin-wrapper .left-sidebar ul li a{
+    padding: 18px;
+    display: block;
+    border-bottom: 1px solid rgb(9, 54, 9);
+}
+
+.admin-wrapper .left-sidebar ul li a:hover{
+    background: rgb(9, 54, 9);
+}
+
+.admin-wrapper .admin-content{
+    flex: 8;
+    height: 100%;
+    padding: 40px 100px 100px;
+    overflow-y: scroll;
+}
+
+.big-btn{
+    background: rgb(9, 54, 9);
+    float: none;
+    border-radius: 3px;
+}
+
+.big-btn:hover{
+    background: #f28500;
+    transition: all 0.5s ease-in-out;
+}
+
+.admin-wrapper .admin-content .content .page-title{
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.1rem;
+}
+
+th,td{
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #636363;
+}
+
+.edit{
+    color: green;
+}
+
+.delete{
+    color: red;
+}
+
+.publish{
+    color: blue;
+}
+
+.edit:hover, .delete:hover, .publish:hover{
+    text-decoration: underline;
+}
+
+button{
+    border: 0px;
+    color: #fff;
+}
+
+form div{
+    margin-bottom: 15px;
+}

@@ -1,0 +1,900 @@
+/* Universal declarations */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: Algeria;
+    src: url(../fonts/ALGER.TTF);
+}
+
+@font-face {
+    font-family: futura_bold;
+    src: url(../fonts/futura_bold.ttf);
+}
+
+@font-face {
+    font-family: gillsans;
+    src: url(../fonts/GILLUBCD.TTF);
+}
+
+@font-face {
+    font-family: cambria_bold;
+    src: url(../fonts/cambriab.ttf);
+}
+
+@font-face {
+    font-family: newGothic;
+    src: url(../fonts/NewGothic.ttf);
+}
+
+@font-face {
+    font-family: footLight;
+    src: url(../fonts/Footlight.TTF);
+}
+
+
+.clearfix::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+li{
+    list-style: none;
+}
+
+.btn{
+    padding: .5rem 1rem;
+    color: rgb(3, 117, 3);
+    border: 1px solid rgb(3, 117, 3);
+    position: absolute;
+    bottom: 10px;
+
+    background: #fff;
+    right: 10px;
+}
+
+.text-input{
+    padding: .7rem 1rem;
+    display: block;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    outline: none;
+    color: #444;
+    line-height: 1.5rem;
+    font-size: 1.2em;
+}
+
+html, body{
+    background-color: #f6f6f6;
+    height: 100%;
+
+}
+
+/* End Universal declarations */
+
+/* Header Style */
+header {
+    height: 66px;
+    background: rgb(11, 75, 11);
+    width: 100%;
+    position: fixed;
+    z-index: 400;
+}
+
+header .header-container {
+    width: 85%;
+    height: inherit;
+    margin: auto;
+
+}
+
+@media all and (max-width:1190px) {
+    header .header-container {
+        width: 100%;
+    }
+
+    header .header-container .logo-container {
+        padding: 0px 15px;
+    }
+
+}
+
+header .header-container .logo-container {
+    width: 50%;
+    line-height: 66px;
+    float: left;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    float: left;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #fff;
+    font-weight: bolder;
+}
+
+header .header-container .logo-container h3 span {
+    color: #f28500;
+    font-family: cambria_bold;
+}
+
+header .header-container .menu-toggle {
+    display: none;
+}
+
+.social-handles {
+    height: inherit;
+    float: right;
+}
+
+.social-handles li {
+    float: left;
+    margin-left: 9px;
+}
+
+.social-handles li a{
+    height: 48px;
+    background: rgba(255, 255, 255, .4);
+    padding: 13px 12px;
+    color: #fff;
+}
+
+.social-handles li a:hover {
+    background: #fff;
+    color: #f28500;
+    transition: 0.5s;
+}
+
+header .header-container ul li {
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+header .header-container .nav {
+    height: inherit;
+    float: right;
+}
+
+header .header-container .nav li {
+    color: #fff;
+    float: left;
+}
+
+header .header-container .nav li a {
+    text-decoration: none;
+    display: block;
+    font-size: 1.1em;
+    color: #fff;
+    font-family: cents18;
+    /* font-weight: bold; */
+    padding: 22.3px 15px;
+}
+
+header .header-container .nav li a:hover {
+    background: #f28500;
+    transition: 0.5s;
+}
+
+header .header-container .nav .dropdown-li {
+    position: relative;
+}
+
+header .header-container .nav .dropdown-li ul {
+    position: absolute;
+    top: 66px;
+    right: 0px;
+    display: none;
+    width: 200px;
+}
+
+header .header-container .nav .dropdown-li ul li {
+    width: 100%;
+}
+
+header .header-container .nav .dropdown-li ul li a {
+    padding: 10px;
+    color: #444;
+    background: #e6e4e4;
+    height: auto;
+}
+
+header .header-container .nav .dropdown-li ul li a:hover {
+    background: #d5d6d6;
+}
+
+header .header-container .nav .dropdown-li ul li .logout:hover {
+    color: red;
+}
+
+header .header-container .nav .dropdown-li:hover ul {
+    display: block;
+}
+
+/* End Header Style */
+
+/*MENU BAR STYLE */
+.menu-bar-overall-div{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .3);
+    position: fixed;
+    z-index: 500;
+    display: block;
+    margin-left: -1000%;
+  }
+  
+  .menu-bar-overall-div .side-menu-bar{
+    width: 250px;
+    margin-left: -250px;
+    height: 100%;
+    background: #fff;   
+    z-index: 200;
+  }
+  
+  .menu-bar-overall-div .side-menu-bar .side-bar-ul{
+    padding: 0px;
+    display: block;
+    margin: 0px;
+  
+  }
+  
+  .menu-bar-overall-div .side-menu-bar .side-bar-ul .side-bar-li{
+    width: 100%;
+    line-height: 40px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 0px 5px 20px;
+    color: rgb(8, 59, 8);
+    border-bottom: 1px solid rgba(0, 0, 0, .3);
+  }
+  
+  .menu-bar-overall-div .side-menu-bar .side-bar-ul .side-bar-li:hover{
+    background: #c0761c;
+    color: #fff;
+    transition: 0.5s;
+  }
+  
+  .menu-bar-overall-div .side-menu-bar .side-bar-ul a{
+    text-decoration: none;
+  }
+
+  /* /Menu-bar */
+
+
+  /* Body Starts */
+
+.page-wrapper{
+    min-height: 100%;
+    width: 100%;
+    padding-top: 60px;
+}
+
+.post-slider{
+    position: relative;
+}
+
+.post-slider .prev{
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    cursor: pointer;
+    color: rgb(18, 71, 18);
+}
+
+.post-slider .next{
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    cursor: pointer;
+    color: rgb(18, 71, 18);
+}
+
+.post-slider .slider-title{
+    text-align: center;
+    margin: 30px auto;
+    color: rgb(18, 71, 18);
+    font-family: footLight;
+}
+
+.post-wrapper {
+    width: 84%;
+    height: 350px;
+    margin: 0px auto;
+    overflow: hidden;
+}
+
+.post-wrapper .post{
+    background: #fff;
+    display: inline-block;
+    width: 300px;
+    cursor: pointer;
+    margin:0px 10px;
+    height: 350px;
+    border-radius: 5px;
+    box-shadow: 1rem 1rem 1rem -1rem #a0a0a033;
+}
+
+.post-wrapper a:hover{
+    color: rgb(3, 117, 3);
+}
+
+.post-wrapper a{
+    color: rgb(83, 87, 84);
+}
+
+.post-wrapper .post .slider-image{
+    width: 100%;
+    height: 200px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.post-wrapper .post .post-info{
+    height: 145px;
+    padding: 7px;
+    position: relative;
+}
+
+.post-wrapper .post .post-info h4{
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    font-family: footLight;
+}
+
+.post-wrapper .post .post-info .user{
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.post-wrapper .post .post-info .user .image-container{
+    width: 40px;
+    height: inherit;
+    float: left;
+    margin-right: 6px;
+    border-radius: 100%;
+    background: green;
+}
+
+.post-wrapper .post .post-info .user .image-container img{
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+}
+
+.post-wrapper .post .post-info .user p{
+    font-family: cambria_bold;
+}
+
+.post-wrapper .post .post-info .category{
+    position: absolute;
+    bottom: 0;
+    width: 95%;
+}
+
+.post-wrapper .post .post-info .category a{
+    float: left;
+    font-size: 0.8rem;
+    font-weight: 550;
+    font-family:cursive;
+}
+
+.post-wrapper .post .post-info .category span{
+    float: right;
+    font-size: 0.75rem;
+    font-weight: 550;
+    color: rgb(18, 71, 18);
+    font-family:cursive;
+}
+
+
+
+/* Content Styling */
+.content-wrapper{
+    width: 90%;
+    margin: 30px auto 30px ;
+}
+
+.content-wrapper .recent-posts-section{
+    float: left;
+    height: inherit;
+    width: 70%;
+}
+
+.content-wrapper .recent-posts-section h3{
+    font-size: 1.9rem;
+    margin: 20px;
+    font-family: cambria_bold;
+}
+
+.content-wrapper .recent-posts-section .posts{
+    background: gold;
+    height: 250px;
+    width: 95%;
+    border-radius: 5px;
+    margin: 10px auto;
+    background-color: #fff;
+    position: relative;
+}
+
+
+.content-wrapper .recent-posts-section .posts img{
+    width: 100%;
+    height: inherit;
+    width: 40%;
+    float: left;
+}
+
+.content-wrapper .recent-posts-section .posts .text-container{
+    width: 60%;
+    font-family:cursive;
+    float: right;
+    height: inherit;
+    color: rgb(3, 117, 3);
+    padding: 10px;
+}
+
+.content-wrapper .recent-posts-section .posts .text-container h2{
+    font-weight: bolder;
+    margin-bottom: 5px;
+    color:#000;
+    font-family: footLight;
+    font-size: 1.7rem;
+}
+
+.content-wrapper .recent-posts-section .posts .text-container p{
+    padding: 10px 10px 10px 0;
+    font-family: cents18;
+    font-size: 1.15rem;
+    color:#555555;
+}
+
+.btn:hover{
+    background: rgb(3, 117, 3);
+    color: #fff;
+
+    transition: 0.5s;
+}
+
+.content-wrapper .topics-section{
+    float: left;
+    height: inherit;
+    width: 30%;
+}
+
+
+.content-wrapper .topics-section .section{
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.content-wrapper .topics-section .section.search{
+    margin-top: 75px;
+}
+
+.content-wrapper .topics-section .section.topics ul{
+    border-top: 1px solid #0e0e0e;
+}
+
+.content-wrapper .topics-section .section.topics ul li a{
+    display: block;
+    font-size: 1.1rem;
+    border-bottom: 0.1px solid #0e0e0e;
+    padding: 15px 0 15px 0;
+    color: #555555;
+    transition: all 0.3s;
+}
+
+.content-wrapper .topics-section .section.topics ul li a:hover{
+    padding-left: 10px;
+    transition: all 0.3s;
+}
+
+.section-title{
+    margin: 10px 0 10px 0;
+}
+
+.footer{
+    background: rgb(14, 56, 14);
+    color: #d3d3d3;
+    height: 400px;
+    position: relative;
+
+}
+
+.footer .footer-content{
+    height: 350px;
+    display: flex;
+}
+
+
+.footer .footer-content .footer-section{
+    flex: 1;
+    padding: 25px;
+}
+
+.footer .footer-bottom{
+    background-color: rgb(5, 29, 5);
+    text-align: center;
+    height: 50px;
+    line-height: 10px;
+    width: 100%;
+    font-size: 1.2rem;
+    color: #fff;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    padding-top: 20px;
+}
+
+.footer-handles {
+    float: none;
+    margin-top: 25px;
+}
+
+.footer-handles li {
+    float: left;
+
+}
+
+.footer .footer-content .footer-section.about p{
+    margin: 15px 0;
+    font-size: 1.15rem;
+}
+
+.footer .footer-content .footer-section.about .contact span{
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 18px;
+}
+
+.footer-handles a{
+    border: 1px solid grey;
+    width: 45px;
+    color: rgb(224, 221, 221);
+    height: 41px;
+    padding-top: 5px;
+    padding-right: 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 1.3em;
+    border-radius: 5px;
+    margin-right: 5px;
+    transition: all 0.3s;
+}
+
+.footer-handles a:hover {
+    border: 1px solid #fff;
+    transition: all 0.3s;
+    color: #fff;
+}
+
+.footer .footer-content .footer-section .big-btn{  
+    position: static;
+}
+
+.footer .footer-content .footer-section.links ul{
+    margin-top: 15px;
+    margin-left: 30px;
+}
+
+.footer .footer-content .footer-section.links ul a li{
+    list-style: circle;
+}
+
+.footer .footer-content .footer-section.links ul a{
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    transition: all .3s;
+}
+
+.footer .footer-content .footer-section.links ul a:hover{
+    margin-left: 15px;
+    transition: all .3s;
+}
+
+.contact-input{
+    background: #272727;
+    color: #bebdbd;
+    margin-bottom: 10px;
+    line-height: 1.5rem;
+    padding: .9rem 1.4rem;
+}
+
+.contact-input:focus{
+    background: #1a1a1a;
+}
+
+.big-btn{
+    padding: .7rem 1.3rem; 
+    line-height: 1.3rem;
+    cursor: pointer;
+    font-size: 1rem;
+    float: right;
+}
+
+
+
+/* Single Post Style */
+.content-wrapper  .main-content-wrapper .recent-posts-section.single{
+    background-color: #fff;
+    font-size: 1.1em;
+    padding: 20px 50px;
+    border-radius: 5px;
+}
+
+.content-wrapper  .main-content-wrapper .recent-posts-section.single h3{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.content-wrapper .main-content-wrapper .recent-posts-section.single .post-content p{
+    margin: 5px 0;
+    padding: 9px 0;
+}
+
+
+
+.content-wrapper .main-content-wrapper .topics-section.single{
+    padding: 0 10px;
+}
+
+.content-wrapper .topics-section.single .popular .post{
+    border-top: 1px solid #e0e0e0;
+    margin-top: 10px;
+    padding-top: 10px;
+
+}
+
+.content-wrapper .topics-section.single .popular .post img{
+    height: 60px;
+    width: 75px;
+    float: left;
+    margin-right: 10px;
+}
+
+.content-wrapper .topics-section.single .popular .post .title{
+    color: #272727;
+    font-family: footLight;
+    font-size: 0.8rem;
+}
+
+/* End single Post Style */
+
+
+
+
+/* Register Style */
+.register{
+    height: calc(100% - 66px);
+    width: 100%;
+    position: absolute;
+    top: 66px;
+}
+
+
+.register .signup .login-request{
+    font-family: cursive;
+    color: #f28500;
+}
+
+.register .signup .login-request a{
+    text-decoration: underline;
+
+}
+
+.register .signup {
+    width: inherit;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+}
+
+.register .signup .wrapper{
+    height: 470px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 400px;
+    background-color: rgb(8, 59, 8);
+}
+
+.register .signup .wrapper h1{
+    font-size: 1.8rem;
+    color: #fff;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.register .signup .wrapper input{
+    width: 90%;
+    padding-left: 20px;
+    height: 45px;
+    font-size: 1.1rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 2px;
+    border: 0px;
+}
+
+.register .signup .wrapper button{
+    width: 150px;
+    cursor: pointer;
+    font-family: fantasy;
+    border: 0px;
+    border-radius: 4px;
+    font-size: 1rem;
+    height: 35px;
+    background: #fff;
+    transition: all 0.3s;
+}
+
+.register .signup .wrapper button:hover{
+    background-color: #f28500;
+    transition: all 0.3s;
+    color: #fff;
+}
+
+/* //Register Style */
+
+
+
+
+
+
+
+/* Media queries */
+@media all and (max-width:1040px) {
+
+    .social-handles {
+        display: none;
+    }
+    
+    header .header-container .overall-nav .menu {
+        width: 100%;
+    }
+
+    header .header-container .overall-nav {
+        justify-content: space-around;
+    }
+
+    header .header-container .logo-container {
+        width: 30%;
+    }
+
+    header .header-container .overall-nav {
+        width: 70%;
+    }
+}
+
+@media all and (max-width:755px) {
+    header .header-container {
+        position: relative;
+    }
+
+    header .header-container .logo-container {
+        width: 80%;
+    }
+
+    header .header-container .menu-toggle {
+        position: absolute;
+        right: 20px;
+        cursor: pointer;
+        top: 18px;
+        background-color: blue;
+        color: #fff;
+        display: block;
+    }
+
+    header .header-container .nav {
+        display: none;
+    }
+
+   
+}
+
+    /* Media Query for recent Post */
+
+@media all and (max-width:930px) {
+    .content-wrapper{
+        width: 100%;
+    }
+
+    .main-content-wrapper{
+        padding: 10px;
+    }
+
+    .content-wrapper  .main-content-wrapper .recent-posts-section.single{
+        padding: 10px 20px;
+    }
+
+    .content-wrapper .recent-posts-section{
+        width: 100%;
+        padding: 10px;
+    }
+
+    .content-wrapper .topics-section{
+        width: 100%;
+        padding: 10px;
+    }
+
+    .content-wrapper .topics-section .section.search{
+        margin-top: 30px;
+    }
+    
+    .content-wrapper .recent-posts-section .posts{
+        width: 100%;
+    }
+
+    .footer{
+        height: auto;
+    }
+    
+    .footer .footer-content{
+        height: auto;
+        flex-direction: column;
+    }
+
+    .footer .footer-content .contact-form{
+        padding-bottom: 90px;
+    }
+
+    .big-btn{
+       width: 100%;
+    }
+
+}
+
+@media all and (max-width:600px){
+    .content-wrapper .recent-posts-section .posts{
+        height: auto;
+    }
+    
+    
+    .content-wrapper .recent-posts-section .posts img{
+        width: 100%;
+      
+    }
+    
+    .btn{
+        position: static;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    .content-wrapper .recent-posts-section .posts .text-container{
+        width: 100%;
+    }
+
+    .content-wrapper .recent-posts-section .posts .text-container h2{
+        font-size: 1.4rem;
+    }
+
+    .post-slider .prev{
+        left: 10px;
+    }
+    
+    .post-slider .next{
+        right: 10px;
+    }
+ 
+}
+
+/* End */
