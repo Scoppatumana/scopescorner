@@ -687,17 +687,6 @@ header .header-container .nav .dropdown-li:hover ul {
     top: 66px;
 }
 
-
-.register .signup .login-request{
-    font-family: cursive;
-    color: #f28500;
-}
-
-.register .signup .login-request a{
-    text-decoration: underline;
-
-}
-
 .register .signup {
     width: inherit;
     height: 100%;
@@ -708,6 +697,23 @@ header .header-container .nav .dropdown-li:hover ul {
 }
 
 .register .signup .wrapper{
+   position: relative;
+   
+}
+
+.register .signup .wrapper .login-request{
+    font-family: cursive;
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    color: #f28500;
+}
+
+.register .signup .wrapper .login-request a{
+    text-decoration: underline;
+}
+
+.register .signup .wrapper form{
     height: 470px;
     border-radius: 10px;
     display: flex;
@@ -718,11 +724,12 @@ header .header-container .nav .dropdown-li:hover ul {
     background-color: rgb(8, 59, 8);
 }
 
-.register .signup .wrapper h1{
+.register .signup .wrapper form h1{
     font-size: 1.8rem;
     color: #fff;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
 
 .register .signup .wrapper input{
     width: 90%;

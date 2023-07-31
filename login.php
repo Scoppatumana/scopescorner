@@ -1,3 +1,10 @@
+<?php 
+    include 'app/database/connection.php';
+    include("path.php");
+    include 'app/database/controller/users.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,20 +21,23 @@
 </head>
 
 <body>
-<?php include("app/includes/header.php"); ?>
+<?php include(ROOT_PATH . "/app/includes/header.php"); ?>
 
       <div class="register clearfix">
         
         <section class="signup">
             <div class="wrapper" style="height:300px">
 
-                <h1>Log In</h1>
-                <input type="email" placeholder="Email address">
-                <input type="password" placeholder="Enter Password">
-                <button>
+               <form action="login.php" method="POST">
+               <h1>Log In</h1>
+                <?php include 'app/helpers/formErrors.php'; ?>
+                <input type="text" name="username" value ="<?php echo $username ?>" placeholder="Username">
+                <input type="password" name="password" value ="<?php echo $password ?>" placeholder="Enter Password">
+                <button type="submit" name="login-btn">
                     Log In
                 </button>
                 <p class="login-request">Don't have an account?<a href="">Sign up</a></p>
+               </form>
             </div>
         </section>
       </div>

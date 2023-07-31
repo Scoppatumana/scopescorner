@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require('connection.php');
     // Function For Temporary Printing
     function printResult($value){
@@ -15,6 +16,9 @@ require('connection.php');
         $stmt->execute();
         return $stmt;
     }
+
+
+    
 
     // Function To Select All Rows
     function selectAll($table, $conditions = []){
@@ -44,7 +48,7 @@ require('connection.php');
     }
 
     
-    // Function To Select One Rows
+    // Function To Select One Row
     function selectOne($table, $conditions){
         global $conn;
         $sql = "SELECT * FROM $table";
@@ -66,15 +70,55 @@ require('connection.php');
             
     }
 
-    $conditions = [
-         'admin' => 0,
-    ];
-    
-    $users = selectOne("users", $conditions);
-    printResult($users);
+     // Function To Insert to the Database
+     function create($table, $data){
+        global $conn;
+        $sql = "INSERT INTO $table SET ";
+        $i = 0;
+        foreach ($data as $key => $value) {
+            if ($i === 0) {
+                $sql = $sql . "$key = ?";
+            }else{
+                $sql = $sql . ",$key = ?";
+            }
+            $i++;
+        }
 
-    // $users = selectAll("users");
-    // printResult($users);
+        $stmt = executeQuery($sql, $data);
+        $id = $stmt->insert_id;
+        return $id;
+            
+    }
 
+    // Function to Update the Database
+    function update($table, $data, $id){
+        global $conn;
+        $sql = "UPDATE $table SET ";
+        $i = 0;
+        foreach ($data as $key => $value) {
+            if ($i === 0) {
+                $sql = $sql . "$key = ?";
+            }else{
+                $sql = $sql . ",$key = ?";
+            }
+            $i++;
+        }
 
+        $sql = $sql . " WHERE id=?";
+        
+        $data['id'] = $id;
+        $stmt = executeQuery($sql, $data);
+        $record = $stmt->affected_rows;
+        return $record;
+    }
+
+    // Function to Delete Row from the Database
+    function delete($table, $id){
+        global $conn;
+        $sql = "DELETE FROM $table WHERE id=?";
+        
+        $stmt = executeQuery($sql, ['id' => $id]);
+        $record = $stmt->affected_rows;
+        return $record;
+    }
 ?>

@@ -1,6 +1,14 @@
+
+<?php
+  include 'app/database/connection.php';
+  include("path.php");
+  include 'app/database/controller/users.php';
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,22 +22,25 @@
 </head>
 
 <body>
-<?php include("app/includes/header.php"); ?>
-
+<?php include(ROOT_PATH . "/app/includes/header.php"); ?>
   <div class="register clearfix">
 
     <section class="signup">
       <div class="wrapper">
 
-        <h1>Sign Up</h1>
-        <input type="text" placeholder="Firstname">
-        <input type="text" placeholder="Lastname">
-        <input type="email" placeholder="Email address">
-        <input type="password" placeholder="Create password">
-        <input type="password" placeholder="Confirm Password">
-        <button>
-          Sign Up
-        </button>
+        <form action="register.php" method = "POST">
+          <h1>Sign Up</h1>
+          <?php include 'app/helpers/formErrors.php'; ?>
+
+         
+          <input type="text" name="username" value="<?php echo $username;?>" placeholder="Username">
+          <input type="email" name="email" value="<?php echo $email;?>" placeholder="Email address">
+          <input type="password" name="create_password" value="<?php echo $create_password;?>" placeholder="Create password">
+          <input type="password" name="password" value="<?php echo $password;?>" placeholder="Confirm Password">
+          <button type="Submit" name="register-btn">
+            Sign Up
+          </button>
+        </form>
         <p class="login-request">Already have an account?<a href="">Sign in</a></p>
       </div>
     </section>

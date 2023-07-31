@@ -24,15 +24,36 @@
                 <li> <a href="#">Posts</a></li>
                 <li> <a href="#">About</a></li>
                 <li> <a href="#">Services</a></li>
+                 <?php
+                    if(isset($_SESSION['id'])){
+                ?>
                 <li class="dropdown-li">
                     <a href="">
-                        <i class="fa fa-user-circle"></i> Scope's Corner <i class="fa fa-chevron-down"></i>
+                        <i class="fa fa-user-circle"></i> <?php echo $_SESSION['username']; ?> <i class="fa fa-chevron-down"></i>
                     </a>
                     <ul>
+                      <?php
+                        if($_SESSION['admin']){
+                      ?>
                         <li><a href=""> <i class="fa fa-dashboard"> </i> Dashboard</a></li>
-                        <li><a href="" class="logout"><i class="fa fa-sign-in"> </i> Login</a></li>
+                      <?php
+
+                        }
+                        ?>
+                      <li><a href="<?php echo BASE_URL . '/logout.php' ?>" class="logout"><i class="fa fa-sign-out"> </i> Logout</a></li>
+                      
+                        
+                        
                     </ul>
                 </li>
+                <?php
+                    }else{
+                ?>
+                <li> <a href="<?php echo BASE_URL . "/register.php"; ?>">Sign Up</a></li>
+                <li> <a href="<?php echo BASE_URL . "/login.php"; ?>"> <i class="fa fa-sign-in"></i> Login</a></li>
+                <?php
+                    }
+                 ?>
             </ul>
         </div>
     </header>

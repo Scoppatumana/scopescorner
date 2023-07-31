@@ -1,3 +1,9 @@
+
+<?php
+
+    include("path.php");
+    include(ROOT_PATH . "/app/database/db.php"); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,14 +21,20 @@
 
 <body>
    <?php include("app/includes/header.php"); ?>
+
+   
+   
     <!-- Page Wrapper starts -->
     <div class="page-wrapper">
 
+    <?php include("app/includes/message.php"); ?>
+    
         <!-- Start of trending post slider -->
         <div class="post-slider">
             <h1 class="slider-title">
-                Trending Posts
+            Trending 
             </h1>
+            
 
             <i class="fa fa-chevron-left prev fa-lg"></i>
             <i class="fa fa-chevron-right next fa-lg"></i>
@@ -451,7 +463,7 @@
 
 
 
-
+    <?php include("app/includes/footer.php"); ?>
 
 
 
