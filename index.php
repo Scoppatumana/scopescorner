@@ -4,8 +4,31 @@
     include("path.php");
     include(ROOT_PATH . "/app/database/controller/topics.php");
     
-    $posts = selectAll('posts');
-    printResult($posts);
+    $posts = array();
+    $postTitle = 'Recent Posts';
+
+    if(isset($_GET['t_id'])){
+        $posts = getPostsByTopicId($_GET['t_id']);
+        if(!empty($posts)){
+            $postTitle = "You searched for posts under '" . $_GET['name'] . "'";
+        }else{
+            $postTitle = "Your Search for '" . $_GET['name'] . "' yielded " . count($posts) . " result(s)";
+            $posts = getPublishedPosts();
+        }
+    }else if(isset($_POST['search-term'])){
+        $posts = searchPosts($_POST['search-term']);
+        
+        if(!empty($posts)){
+            $postTitle = "You searched for posts under '" . $_POST['search-term'] . "'";
+        }else{
+            $postTitle = "Your Search for '" . $_POST['search-term'] . "' yielded " . count($posts) . " result(s)";
+            $posts = getPublishedPosts();
+        }
+    }else{
+        $posts = getPublishedPosts();
+    }
+    
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,29 +68,30 @@
             <div class="post-wrapper">
                 <?php
                     foreach ($posts as $key => $post) {
-                    $user = selectOne('users', ['id' => $post['user_id']]);
-                    $topic = selectOne('topics', ['id' => $post['topic_id']]);
+                    
                 ?>
 
                 <div class="post">
-                    <img src="assets/images/body-background2.jpg" class="slider-image" alt="Slider Image" title="Slider Image">
+                    <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" class="slider-image" alt="Slider Image" title="Slider Image">
                     <div class="post-info">
-                        <h4><a href="single.php"><?php echo $post['title']; ?></a></h4>
+                        <div class="heading">
+                            <h4><a href="single.php?id=<?php echo $post['id']; ?>"><?php echo $post['title']; ?></a></h4>
+                        </div>
                         <!-- <i class="fa fa-user-circle"> Omisanya Sodiq</i>
                         &nbsp;
                         <i class="fa fa-user"> Mar 8, 2023.</i> -->
                         <div class="user">
                             <div class="image-container">
-                                <img src="assets/images/body-background2.jpg" alt="User Image">
+                                <img src="<?php echo BASE_URL . '/assets/images/' . $post['userImage']; ?>" alt="User Image">
                             </div>
                             <a href="">
-                                <p><?php echo $user['username']; ?></p>
+                                <p><?php echo $post['username']; ?></p>
                             </a>
                         </div>
                         <div class="category">
-                            <a href=""><?php echo $topic['name']; ?></a>
+                            <a href=""><?php echo $post['topicName']; ?></a>
                             <span>
-                                <i class="fa fa-calender-day"> </i>Jun 31, 2023
+                                <i class="fa fa-calender-day"> </i> <?php echo date('F j, Y', strtotime($post['created_at'])); ?>
                             </span>
                         </div>
 
@@ -86,71 +110,32 @@
         <div class="content-wrapper clearfix">
             <section class="recent-posts-section">
                 <h3>
-                    Recent Posts
+                    <?php echo $postTitle ?>
                 </h3>
+                <?php
+                    foreach ($posts as $key => $post) {
+                    
+                ?>
                 <div class="posts clearfix">
 
-                    <img src="assets/images/developer.jpg" alt="Recent Post Image">
+                    <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" alt="Recent Post Image">
 
 
                     <div class="text-container">
-                        <h2>The Strongest and Sweetest Songs Yet Remain to be Sung</h2>
-                        <i class="fa fa-user-circle"></i> Omisanya Sodiq
+                        <h2><?php echo $post['title']; ?></h2>
+                        <i class="fa fa-user-circle"></i> <?php echo $post['username']; ?>
                         &nbsp;
-                        <i class="fa fa-bookings"></i> Jun 12, 2023
-                        <p>Lorem Ipsum dolor sit Amet consectetur, adipisicing elit. Exercititationem optio possimus a inventore maxime laborum
+                        <i class="fa fa-bookings"></i> <?php echo date('F j, Y', strtotime($post['created_at'])); ?>
+                        <p>
+                        <?php echo html_entity_decode(substr($post['body'], 0,150) . '...'); ?>
                         </p>
-                        <a href="single.php" class="btn">Read More</a>
+                        <a href="single.php?id=<?php echo $post['id']; ?>" class="btn">Read More</a>
                     </div>
                 </div>
+                <?php
 
-                <div class="posts clearfix">
-
-                    <img src="assets/images/developer.jpg" alt="Recent Post Image">
-
-
-                    <div class="text-container">
-                        <h2>The Strongest and Sweetest Songs Yet Remain to be Sung</h2>
-                        <i class="fa fa-user-circle"></i> Omisanya Sodiq
-                        &nbsp;
-                        <i class="fa fa-bookings"></i> Jun 12, 2023
-                        <p>Lorem Ipsum dolor sit Amet consectetur, adipisicing elit. Exercititationem optio possimus a inventore maxime laborum
-                        </p>
-                        <a href="single.php" class="btn">Read More</a>
-                    </div>
-                </div>
-
-                <div class="posts clearfix">
-
-                    <img src="assets/images/developer.jpg" alt="Recent Post Image">
-
-
-                    <div class="text-container">
-                        <h2>The Strongest and Sweetest Songs Yet Remain to be Sung</h2>
-                        <i class="fa fa-user-circle"></i> Omisanya Sodiq
-                        &nbsp;
-                        <i class="fa fa-bookings"></i> Jun 12, 2023
-                        <p>Lorem Ipsum dolor sit Amet consectetur, adipisicing elit. Exercititationem optio possimus a inventore maxime laborum
-                        </p>
-                        <a href="single.php" class="btn">Read More</a>
-                    </div>
-                </div>
-
-                <div class="posts clearfix">
-
-                    <img src="assets/images/developer.jpg" alt="Recent Post Image">
-
-
-                    <div class="text-container">
-                        <h2>The Strongest and Sweetest Songs Yet Remain to be Sung</h2>
-                        <i class="fa fa-user-circle"></i> Omisanya Sodiq
-                        &nbsp;
-                        <i class="fa fa-bookings"></i> Jun 12, 2023
-                        <p>Lorem Ipsum dolor sit Amet consectetur, adipisicing elit. Exercititationem optio possimus a inventore maxime laborum
-                        </p>
-                        <a href="single.php" class="btn">Read More</a>
-                    </div>
-                </div>
+                    }
+                ?>
 
             </section>
             <section class="topics-section">
@@ -158,7 +143,7 @@
                     <h2 class="section-title">
                         Search
                     </h2>
-                    <form action="">
+                    <form action="index.php" method="post">
                         <input type="text" name="search-term" class="text-input" placeholder="Search..">
                     </form>
                 </div>
@@ -169,7 +154,7 @@
                     <?php
                         foreach ($topics as $key => $topic) {
                     ?>
-                        <li> <a href=""><?php echo $topic['name']; ?></a></li>
+                        <li> <a href="<?php echo BASE_URL . '/index.php?t_id=' . $topic['id'] . '&name=' . $topic['name']; ?>"><?php echo $topic['name']; ?></a></li>
                     <?php
                         }
                     ?>
@@ -195,7 +180,7 @@
                 <div class="post ">
                     <img src="assets/images/body-background2.jpg" class="slider-image" alt="Slider Image" title="Slider Image">
                     <div class="post-info">
-                        <h4><a href="single.php">One day your life will flash before your eyes</a></h4>
+                        <h4><a href="single.php?id=<?php echo $post['id']; ?>">One day your life will flash before your eyes</a></h4>
                        
                         <div class="user">
                             <div class="image-container">
@@ -219,7 +204,7 @@
                 <div class="post">
                     <img src="assets/images/body-background2.jpg" class="slider-image" alt="Slider Image" title="Slider Image">
                     <div class="post-info">
-                        <h4><a href="single.php">One day your life will flash before your eyes</a></h4>
+                        <h4><a href="single.php?id=<?php echo $post['id']; ?>">One day your life will flash before your eyes</a></h4>
                         <!-- <i class="fa fa-user-circle"> Omisanya Sodiq</i>
                         &nbsp;
                         <i class="fa fa-user"> Mar 8, 2023.</i> -->
@@ -244,7 +229,7 @@
                 <div class="post">
                     <img src="assets/images/body-background2.jpg" class="slider-image" alt="Slider Image" title="Slider Image">
                     <div class="post-info">
-                        <h4><a href="single.php">One day your life will flash before your eyes</a></h4>
+                        <h4><a href="single.php?id=<?php echo $post['id']; ?>">One day your life will flash before your eyes</a></h4>
                         <!-- <i class="fa fa-user-circle"> Omisanya Sodiq</i>
                         &nbsp;
                         <i class="fa fa-user"> Mar 8, 2023.</i> -->
@@ -269,7 +254,7 @@
                 <div class="post">
                     <img src="assets/images/body-background2.jpg" class="slider-image" alt="Slider Image" title="Slider Image">
                     <div class="post-info">
-                        <h4><a href="single.php">One day your life will flash before your eyes</a></h4>
+                        <h4><a href="single.php?id=<?php echo $post['id']; ?>">One day your life will flash before your eyes</a></h4>
                         <!-- <i class="fa fa-user-circle"> Omisanya Sodiq</i>
                         &nbsp;
                         <i class="fa fa-user"> Mar 8, 2023.</i> -->
@@ -294,7 +279,7 @@
                 <div class="post">
                     <img src="assets/images/body-background2.jpg" class="slider-image" alt="Slider Image" title="Slider Image">
                     <div class="post-info">
-                        <h4><a href="single.php">One day your life will flash before your eyes</a></h4>
+                        <h4><a href="single.php?id=<?php echo $post['id']; ?>">One day your life will flash before your eyes</a></h4>
                         <!-- <i class="fa fa-user-circle"> Omisanya Sodiq</i>
                         &nbsp;
                         <i class="fa fa-user"> Mar 8, 2023.</i> -->
@@ -319,7 +304,7 @@
                 <div class="post">
                     <img src="assets/images/body-background2.jpg" class="slider-image" alt="Slider Image" title="Slider Image">
                     <div class="post-info">
-                        <h4><a href="single.php">One day your life will flash before your eyes</a></h4>
+                        <h4><a href="single.php?id=<?php echo $post['id']; ?>">One day your life will flash before your eyes</a></h4>
                         <!-- <i class="fa fa-user-circle"> Omisanya Sodiq</i>
                         &nbsp;
                         <i class="fa fa-user"> Mar 8, 2023.</i> -->

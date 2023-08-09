@@ -1,13 +1,14 @@
 <?php
     include(ROOT_PATH . "/app/database/db.php");
     include(ROOT_PATH . "/app/helpers/validateUser.php");
+    include(ROOT_PATH . "/app/helpers/middleware.php");
 
     function loginUser($user){
         $_SESSION['id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
         $_SESSION['admin'] = $user['admin'];
         $_SESSION['message'] = "You're Logged In";
-        $_SESSION['type'] = "Success";
+        $_SESSION['type'] = "success";
         // header('location: ' . BASE_URL . '/index.php');
 
         if ($_SESSION['admin']) {
@@ -27,7 +28,7 @@
     $image ='';
     $id='';
 
-    $users= selectAll($table, ['admin' => 1]);
+    $users= selectAll($table);
     
 
 
@@ -64,9 +65,12 @@
             }else{
                 array_push($errors, "Wrong Credentials");
                 $username = $_POST['username'];
-                $password = $_POST['password'];
-               
             }
+               
+            }else{
+              
+                $username = $_POST['username'];
+                $password = $_POST['password'];
         }
     }
     
@@ -78,7 +82,7 @@
     // Admin Registration
     
     if(isset($_POST["create-admin"])){
-       
+        adminOnly();
         // Check if Input fields are empty
         $errors = validateUser($_POST);
 
@@ -121,6 +125,7 @@
 
 
       if (isset($_GET['delete_id'])) {
+        adminOnly();
         $count = delete($table, $_GET['delete_id']);
         $_SESSION['message'] = "User Deleted Successfully";
         $_SESSION['type'] = "success";
@@ -132,7 +137,7 @@
 
 
       if (isset($_POST['update-user'])) {
-        
+        adminOnly();
        $errors = validateUser($_POST);
 
         if(!empty($_FILES['image']['name'])){
@@ -183,7 +188,7 @@
         $id = $user['id'];
         $username = $user['username'];
         $email = $user['email'];
-        $admin = isset($user['admin']) ? 1 : 0;
+        $admin = $user['admin'];
 
       }
 

@@ -1,4 +1,14 @@
-<?php include("path.php");?>
+<?php 
+    include("path.php");
+    include(ROOT_PATH . "/app/database/controller/posts.php");
+
+    if(isset($_GET['id'])){
+        $post = selectOne('posts', ['id'=> $_GET['id']]);
+    }
+
+    $posts = selectAll('posts', ['published'=> 1]);
+    $topics =  selectAll('topics');
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +22,7 @@
     <script src="assets/Javascript/jquery-library.js"></script>
     <script src="assets/Javascript/jquery.min.js"></script>
     <!-- <script src="https://cdnjs.cloudfare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script> -->
-    <title>Blog</title>
+    <title><?php echo $post['title']; ?> | ScopesCorner</title>
 </head>
 
 <body>
@@ -30,107 +40,11 @@
                 <section class="recent-posts-section single">
 
                     <h3>
-                        Tinubu Lands In Big Trouble
+                        <?php echo $post['title']; ?> 
                     </h3>
 
                     <div class="post-content">
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-                        <p>In the name of Allah (S.W.T), the most gracious and most merciful. All praises are due to Him
-                            alone. May His mercies and blessings </p>
-
+                        <?php echo html_entity_decode($post['body']); ?> 
                     </div>
                 </section>
             </div>
@@ -140,54 +54,34 @@
                     <h2 class="section-title">
                         Popular
                     </h2>
-                    <div class="post clearfix">
-                        <img src="assets/images/startup-business-teamwork-meeting_1421-2342.jpg" alt="Popular Image">
-                        <a href="" class="title">
-                            <h2>Teni finally gets Married</h2>
-                        </a>
-                    </div>
 
+                    <?php
+                        foreach ($posts as $key => $p) {
+                    ?>
                     <div class="post clearfix">
-                        <img src="assets/images/startup-business-teamwork-meeting_1421-2342.jpg" alt="Popular Image">
+                        <img src="<?php echo BASE_URL . '/assets/images/' . $p['image'] ?>" alt="Popular Image">
                         <a href="" class="title">
-                            <h2>Teni finally gets Married</h2>
+                            <h2><?php echo $p['title']; ?></h2>
                         </a>
                     </div>
+                    <?php
+                        }
+                    ?>
 
-                    <div class="post clearfix">
-                        <img src="assets/images/startup-business-teamwork-meeting_1421-2342.jpg" alt="Popular Image">
-                        <a href="" class="title">
-                            <h2>Teni finally gets Married</h2>
-                        </a>
-                    </div>
 
-                    <div class="post clearfix">
-                        <img src="assets/images/startup-business-teamwork-meeting_1421-2342.jpg" alt="Popular Image">
-                        <a href="" class="title">
-                            <h2>Teni finally gets Married</h2>
-                        </a>
-                    </div>
-
-                    <div class="post clearfix">
-                        <img src="assets/images/startup-business-teamwork-meeting_1421-2342.jpg" alt="Popular Image">
-                        <a href="" class="title">
-                            <h2>Teni finally gets Married</h2>
-                        </a>
-                    </div>
                 </div>
 
                 <div class="section topics">
                     <h2 class="section-title">Topics</h2>
                     <ul>
-                        <li> <a href="">Poems</a></li>
-                        <li> <a href="">Quotes</a></li>
-                        <li> <a href="">Fiction</a></li>
-                        <li> <a href="">Biography</a></li>
-                        <li> <a href="">Motivation</a></li>
-                        <li> <a href="">Inspirations</a></li>
-                        <li> <a href="">Life Lessons</a></li>
-                        <!-- <li> <a href="">Self-development</a></li>
-                        <li> <a href="">Car Deals</a></li> -->
+                    <?php
+                        foreach ($topics as $key => $topic) {
+                    ?>
+                        <li> <a href="<?php echo BASE_URL . '/index.php?t_id=' . $topic['id'] . '&name=' . $topic['name']; ?>"><?php echo $topic['name']; ?></a></li>
+                    <?php
+                        }
+                    ?>
+                        
                     </ul>
                 </div>
             </section>

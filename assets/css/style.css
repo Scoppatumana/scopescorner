@@ -35,6 +35,25 @@
     src: url(../fonts/Footlight.TTF);
 }
 
+.msg{
+    width: 100%;
+    margin: 5px auto;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.success{
+    color: #3a6e3a;
+    border: 1px solid #3a6e3a;
+    background: #bcf5bc;
+}
+
+.error{
+    color: #884b4b;
+    border: 1px solid #884b4b;
+    background: #f5bcbc;
+}
+
 
 .clearfix::after{
     content: '';
@@ -340,7 +359,7 @@ header .header-container .nav .dropdown-li:hover ul {
 }
 
 .post-wrapper .post .post-info{
-    height: 145px;
+    height: 150px;
     padding: 7px;
     position: relative;
 }
@@ -349,6 +368,13 @@ header .header-container .nav .dropdown-li:hover ul {
     font-size: 1.1rem;
     margin-bottom: 15px;
     font-family: footLight;
+}
+
+.post-wrapper .post .post-info .heading{
+    height: 60px;
+
+    margin-bottom: 10px;
+    overflow: hidden;
 }
 
 .post-wrapper .post .post-info .user{
@@ -680,83 +706,29 @@ header .header-container .nav .dropdown-li:hover ul {
 
 
 /* Register Style */
-.register{
-    height: calc(100% - 66px);
-    width: 100%;
-    position: absolute;
-    top: 66px;
-}
-
-.register .signup {
-    width: inherit;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    float: right;
-}
-
-.register .signup .wrapper{
-   position: relative;
-   
-}
-
-.register .signup .wrapper .login-request{
-    font-family: cursive;
-    position: absolute;
-    bottom: 3px;
-    right: 3px;
-    color: #f28500;
-}
-
-.register .signup .wrapper .login-request a{
-    text-decoration: underline;
-}
-
-.register .signup .wrapper form{
-    height: 470px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 400px;
-    background-color: rgb(8, 59, 8);
-}
-
-.register .signup .wrapper form h1{
-    font-size: 1.8rem;
-    color: #fff;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-
-.register .signup .wrapper input{
-    width: 90%;
-    padding-left: 20px;
-    height: 45px;
-    font-size: 1.1rem;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    border-radius: 2px;
-    border: 0px;
-}
-
-.register .signup .wrapper button{
-    width: 150px;
-    cursor: pointer;
-    font-family: fantasy;
-    border: 0px;
-    border-radius: 4px;
-    font-size: 1rem;
-    height: 35px;
+.auth-content{
+    width: 30%;
+    margin: 50px auto;
+    padding: 20px;
     background: #fff;
-    transition: all 0.3s;
+    border-radius: 5px;
 }
 
-.register .signup .wrapper button:hover{
-    background-color: #f28500;
-    transition: all 0.3s;
-    color: #fff;
+.auth-content .form-title{
+    text-align: center;
+}
+
+.auth-content form div{
+    margin-bottom: 15px;
+}
+
+.auth-content form p{
+    text-align: center;
+}
+
+.auth-content form p a{
+    text-decoration: underline;
+    color: red;
 }
 
 /* //Register Style */
@@ -773,7 +745,12 @@ header .header-container .nav .dropdown-li:hover ul {
     .social-handles {
         display: none;
     }
+
+    .auth-content{
+        width: 50%;     
+    }
     
+
     header .header-container .overall-nav .menu {
         width: 100%;
     }
@@ -794,6 +771,11 @@ header .header-container .nav .dropdown-li:hover ul {
 @media all and (max-width:755px) {
     header .header-container {
         position: relative;
+    }
+
+    
+    .auth-content{
+        width: 70%;     
     }
 
     header .header-container .logo-container {
@@ -820,12 +802,13 @@ header .header-container .nav .dropdown-li:hover ul {
     /* Media Query for recent Post */
 
 @media all and (max-width:930px) {
-    .content-wrapper{
-        width: 100%;
+    .admin-wrapper .left-sidebar{
+        display: none;
+    }
     }
 
     .main-content-wrapper{
-        padding: 10px;
+        padding: 10px;          
     }
 
     .content-wrapper  .main-content-wrapper .recent-posts-section.single{
@@ -867,11 +850,14 @@ header .header-container .nav .dropdown-li:hover ul {
        width: 100%;
     }
 
-}
-
 @media all and (max-width:600px){
     .content-wrapper .recent-posts-section .posts{
         height: auto;
+    }
+
+    
+    .auth-content{
+        width: 90%;     
     }
     
     

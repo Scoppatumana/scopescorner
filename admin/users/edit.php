@@ -1,5 +1,6 @@
 <?php  include("../../path.php");
  include(ROOT_PATH . "/app/database/controller/users.php");
+ adminOnly();
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,16 +65,17 @@
                     </div>
                     <div>
                         <?php
-                         if(empty($admin)){
+                         if(isset($admin) && $admin == 1){
                             ?>
                             <label for="">
-                            <input type="checkbox" name="admin" ></input>
+                            <input type="checkbox" name="admin" checked></input>
+                            
                             Admin</label>
                             <?php
                                 }else{
                             ?>
                             <label for="">
-                            <input type="checkbox" name="admin" checked></input>
+                            <input type="checkbox" name="admin" ></input>
                             Admin</label>
                             
                             <?php

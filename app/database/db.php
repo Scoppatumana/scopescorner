@@ -121,4 +121,63 @@ require('connection.php');
         $record = $stmt->affected_rows;
         return $record;
     }
+
+    function getPublishedPosts(){
+        global $conn;
+        $sql = "SELECT 
+                p.*, u.username, 
+                u.image AS userImage, 
+                t.name AS topicName 
+            FROM posts AS p 
+            JOIN users AS u 
+            ON p.user_id=u.id 
+            JOIN topics AS t 
+            ON p.topic_id=t.id 
+            WHERE p.published=?";
+
+        $stmt = executeQuery($sql, ['published' => 1]);
+        $record = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $record;
+    }
+
+    function searchPosts($term){
+        $match = '%' . $term . '%';
+        global $conn;
+        
+        $sql = "SELECT 
+                    p.*, u.username,
+                    u.image AS userImage, 
+                    t.name AS topicName 
+                FROM posts AS p 
+                JOIN users AS u 
+                ON p.user_id=u.id 
+                JOIN topics AS t 
+                ON p.topic_id=t.id 
+                WHERE p.published=?
+                AND p.title LIKE ? OR p.body LIKE ?";
+        
+        $stmt = executeQuery($sql, ['published' => 1, 'title'=> $match, 'body'=> $match]);
+        $record = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $record;
+    }
+
+
+    function getPostsByTopicId($topic_id){
+        global $conn;
+        $sql = "SELECT 
+                p.*, u.username, 
+                u.image AS userImage, 
+                t.name AS topicName 
+            FROM posts AS p 
+            JOIN users AS u 
+            ON p.user_id=u.id 
+            JOIN topics AS t 
+            ON p.topic_id=t.id 
+            WHERE p.published=? AND topic_id=?";
+
+        $stmt = executeQuery($sql, ['published' => 1, 'topic_id' => $topic_id]);
+        $record = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $record;
+    }
+
 ?>

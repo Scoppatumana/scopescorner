@@ -49,7 +49,7 @@
                 <?php
                     }else{
                 ?>
-                <li> <a href="<?php echo BASE_URL . "/register.php"; ?>">Sign Up</a></li>
+                <li> <a href="<?php echo BASE_URL . "/register.php"; ?>"> <i class="fa fa-user-plus"></i> Sign Up</a></li>
                 <li> <a href="<?php echo BASE_URL . "/login.php"; ?>"> <i class="fa fa-sign-in"></i> Login</a></li>
                 <?php
                     }
