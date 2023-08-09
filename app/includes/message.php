@@ -2,12 +2,10 @@
     if(isset($_SESSION['message'])){
 ?>
     <div class="msg <?php echo $_SESSION['type'] ?>">
-        <li>You're Logged in </li>
+        <li><?php echo $_SESSION['message']; ?> </li>
         
     </div>
 <?php
     unset($_SESSION['message'], $_SESSION['type']);
     }
-
-   
 ?>

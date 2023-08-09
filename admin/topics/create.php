@@ -1,4 +1,6 @@
 <?php  include("../../path.php"); ?>
+<?php  include(ROOT_PATH . "/app/database/controller/topics.php");
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,17 +38,18 @@
 
 
                 <form action="create.php" method="post">
+                <?php include(ROOT_PATH . '/app/helpers/formErrors.php'); ?>
                     <div>
                         <label for="">Name</label>
-                        <input type="text" name="" id="" class="text-input"></input>
+                        <input type="text" value="<?php echo $name ?>" name="name" id="" class="text-input"></input>
                     </div>
                     <div>
                         <label for="">Description</label>
-                        <textarea name="body" id="body"></textarea>
+                        <textarea name="description" id="body"><?php echo $description ?></textarea>
                     </div>
                     
                     <div>
-                        <button class="big-btn">
+                        <button class="big-btn" name="add-topic" type="submit">
                             Add Topic
                         </button>
                     </div>

@@ -1,4 +1,6 @@
-<?php  include("../../path.php"); ?>
+<?php  include("../../path.php"); 
+include(ROOT_PATH . "/app/database/controller/users.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,36 +36,53 @@
                     Manage Users
                 </h2>
 
-
-                <form action="create.php" method="post">
+                <form action="create.php" method="post" enctype="multipart/form-data">
+                <?php include(ROOT_PATH . '/app/helpers/formErrors.php'); ?>
                     <div>
                         <label for="">Username</label>
-                        <input type="text" name="" id="" class="text-input"></input>
+                        <input type="text" name="username" value="<?php echo $username ?>" id="" class="text-input"></input>
                     </div>
                     <div>
                         <label for="">Email Address</label>
-                        <input type="text" name="" id="" class="text-input"></input>
+                        <input type="text" name="email" value="<?php echo $email ?>" id="" class="text-input"></input>
                     </div>
+
+                    <div>
+                        <label for="">Image</label>
+                        <input type="file" name="image" id="" class="text-input"></input>
+                    </div>
+
                     <div>
                         <label for="">Password</label>
-                        <input type="text" name="" id="" class="text-input"></input>
+                        <input type="password" name="create_password" value="<?php echo $create_password ?>" id="" class="text-input"></input>
                     </div>
                     <div>
                         <label for="">Password Confirmation</label>
-                        <input type="text" name="" id="" class="text-input"></input>
+                        <input type="password" name="password" value="<?php echo $password ?>" id="" class="text-input"></input>
                     </div>
                     <div>
-                        <label for="">Role</label>
-                        <select name="topic" id="" class="text-input">
-                            <option value="">Select Role</option>
-                            <option value="">Admin</option>
-                            <option value="">Author</option>
-                        </select>
+                        <?php
+                         if(empty($admin)){
+                            ?>
+                            <label for="">
+                            <input type="checkbox" name="admin" ></input>
+                            Admin</label>
+                            <?php
+                                }else{
+                            ?>
+                            <label for="">
+                            <input type="checkbox" name="admin" checked></input>
+                            Admin</label>
+                            
+                            <?php
+                                }
+                            ?>
+                        
                     </div>
                    
                     
                     <div>
-                        <button class="big-btn">
+                        <button name="create-admin" type="submit" class="big-btn">
                             Add User
                         </button>
                     </div>

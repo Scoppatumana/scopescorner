@@ -1,4 +1,8 @@
-<?php  include("../../path.php"); ?>
+<?php  
+    include("../../path.php"); 
+    include(ROOT_PATH . "/app/database/controller/posts.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,6 +37,7 @@
                 <h2 class="page-title">
                     Manage Post
                 </h2>
+                <?php include(ROOT_PATH . "/app/includes/message.php"); ?>
 
                 <table>
                     <thead>
@@ -43,23 +48,32 @@
                     </thead>
 
                     <tbody>
+                        <?php
+                            foreach ($posts as $key => $post) {
+                                $author = selectOne('users', ['id' => $post['user_id']]);
+                        ?>
                         <tr>
-                            <td>1</td>
-                            <td>This is the first Post</td>
-                            <td>Awa</td>
-                            <td><a href="" class="edit">Edit</a></td>
-                            <td><a href="" class="delete">Delete</a></td>
-                            <td><a href="" class="publish">Publish</a></td>
+                            <td><?php echo $key + 1; ?></td>
+                            <td><?php echo $post['title']; ?></td>
+                            <td><?php $author['username']; ?></td>
+                            <td><a href="edit.php?id=<?php echo $post['id']; ?>" class="edit">Edit</a></td>
+                            <td><a href="edit.php?del_id=<?php echo $post['id']; ?>" class="delete">Delete</a></td>
+                            <?php
+                                if ($post['published']) {
+                            ?>
+                                <td><a style="color: orange;" href="edit.php?published=0&p_id=<?php echo $post['id']; ?>" class="unpublish">Unpublish</a></td>
+                            <?php
+                                }else{
+                            ?>
+                                <td><a style="color: blue;" href="edit.php?published=1&p_id=<?php echo $post['id']; ?>" class="publish" >Publish</a></td>
+                            <?php
+                                }
+                            ?>
                         </tr>
+                        <?php
+                            }
 
-                        <tr>
-                            <td>2</td>
-                            <td>This is the Second Post</td>
-                            <td>Scopee</td>
-                            <td><a href="" class="edit">Edit</a></td>
-                            <td><a href="" class="delete">Delete</a></td>
-                            <td><a href="" class="publish">Publish</a></td>
-                        </tr>
+                        ?>
                     </tbody>
                 </table>
             </div>

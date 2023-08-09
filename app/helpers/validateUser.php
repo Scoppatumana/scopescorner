@@ -19,9 +19,16 @@
         }
 
         $existingUser = selectOne('users', ['email' => $user['email']]);
-        if(isset($existingUser)){
-            array_push($errors, "Email already Exists");
-        }
+            if($existingUser){
+                if (isset($user['update-user']) && $existingUser['id'] != $user['id']) {
+                    array_push($errors, "User with that name already Exists");
+                }
+
+                if (isset($user['create-admin']) || isset($user['register-btn'])) {
+                    array_push($errors, "User with that name already Exists");
+                }
+                
+            }
         return $errors;
     }
 

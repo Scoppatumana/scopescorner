@@ -1,4 +1,7 @@
-<?php  include("../../path.php"); ?>
+<?php  
+    include("../../path.php"); 
+    include(ROOT_PATH . "/app/database/controller/topics.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,6 +36,7 @@
                 <h2 class="page-title">
                     Manage Topics
                 </h2>
+                <?php include(ROOT_PATH . "/app/includes/message.php"); ?>
 
                 <table>
                     <thead>
@@ -42,19 +46,20 @@
                     </thead>
 
                     <tbody>
+                        <?php
+                            foreach ($topics as $key => $topic) {
+                        ?>
                         <tr>
-                            <td>1</td>
-                            <td>This is the first Post</td>
-                            <td><a href="" class="edit">Edit</a></td>
-                            <td><a href="" class="delete">Delete</a></td>
+                            <td><?php echo $key+1 ?></td>
+                            <td><?php echo $topic['name']; ?></td>
+                            <td><a href="edit.php?id=<?php echo $topic['id']; ?>" class="edit">Edit</a></td>
+                            <td><a href="index.php?del_id=<?php echo $topic['id']; ?>" class="delete">Delete</a></td>
                         </tr>
-
-                        <tr>
-                            <td>2</td>
-                            <td>This is the Second Post</td>
-                            <td><a href="" class="edit">Edit</a></td>
-                            <td><a href="" class="delete">Delete</a></td>
-                        </tr>
+                        <?php
+                                # code...
+                            }
+                        ?>
+                        
                     </tbody>
                 </table>
             </div>

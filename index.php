@@ -2,7 +2,10 @@
 <?php
 
     include("path.php");
-    include(ROOT_PATH . "/app/database/db.php"); 
+    include(ROOT_PATH . "/app/database/controller/topics.php");
+    
+    $posts = selectAll('posts');
+    printResult($posts);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,34 +43,16 @@
             <i class="fa fa-chevron-right next fa-lg"></i>
 
             <div class="post-wrapper">
-                <div class="post ">
-                    <img src="assets/images/body-background2.jpg" class="slider-image" alt="Slider Image" title="Slider Image">
-                    <div class="post-info">
-                        <h4><a href="single.php">One day your life will flash before your eyes</a></h4>
-                       
-                        <div class="user">
-                            <div class="image-container">
-                                <img src="assets/images/body-background2.jpg" alt="User Image">
-                            </div>
-
-                            <a href="">
-                                <p>Omisanya Sodiq</p>
-                            </a>
-                        </div>
-                        <div class="category">
-                            <a href="">Entertainment</a>
-                            <span>
-                                <i class="fa fa-calender-day"> </i>Jun 31, 2023
-                            </span>
-                        </div>
-
-                    </div>
-                </div>
+                <?php
+                    foreach ($posts as $key => $post) {
+                    $user = selectOne('users', ['id' => $post['user_id']]);
+                    $topic = selectOne('topics', ['id' => $post['topic_id']]);
+                ?>
 
                 <div class="post">
                     <img src="assets/images/body-background2.jpg" class="slider-image" alt="Slider Image" title="Slider Image">
                     <div class="post-info">
-                        <h4><a href="single.php">One day your life will flash before your eyes</a></h4>
+                        <h4><a href="single.php"><?php echo $post['title']; ?></a></h4>
                         <!-- <i class="fa fa-user-circle"> Omisanya Sodiq</i>
                         &nbsp;
                         <i class="fa fa-user"> Mar 8, 2023.</i> -->
@@ -76,11 +61,11 @@
                                 <img src="assets/images/body-background2.jpg" alt="User Image">
                             </div>
                             <a href="">
-                                <p>Omisanya Sodiq</p>
+                                <p><?php echo $user['username']; ?></p>
                             </a>
                         </div>
                         <div class="category">
-                            <a href="">Entertainment</a>
+                            <a href=""><?php echo $topic['name']; ?></a>
                             <span>
                                 <i class="fa fa-calender-day"> </i>Jun 31, 2023
                             </span>
@@ -88,106 +73,10 @@
 
                     </div>
                 </div>
+                <?php
+                    }
 
-                <div class="post">
-                    <img src="assets/images/body-background2.jpg" class="slider-image" alt="Slider Image" title="Slider Image">
-                    <div class="post-info">
-                        <h4><a href="single.php">One day your life will flash before your eyes</a></h4>
-                        <!-- <i class="fa fa-user-circle"> Omisanya Sodiq</i>
-                        &nbsp;
-                        <i class="fa fa-user"> Mar 8, 2023.</i> -->
-                        <div class="user">
-                            <div class="image-container">
-                                <img src="assets/images/body-background2.jpg" alt="User Image">
-                            </div>
-                            <a href="">
-                                <p>Omisanya Sodiq</p>
-                            </a>
-                        </div>
-                        <div class="category">
-                            <a href="">Entertainment</a>
-                            <span>
-                                <i class="fa fa-calender-day"> </i>Jun 31, 2023
-                            </span>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="post">
-                    <img src="assets/images/body-background2.jpg" class="slider-image" alt="Slider Image" title="Slider Image">
-                    <div class="post-info">
-                        <h4><a href="single.php">One day your life will flash before your eyes</a></h4>
-                        <!-- <i class="fa fa-user-circle"> Omisanya Sodiq</i>
-                        &nbsp;
-                        <i class="fa fa-user"> Mar 8, 2023.</i> -->
-                        <div class="user">
-                            <div class="image-container">
-                                <img src="assets/images/body-background2.jpg" alt="User Image">
-                            </div>
-                            <a href="">
-                                <p>Omisanya Sodiq</p>
-                            </a>
-                        </div>
-                        <div class="category">
-                            <a href="">Entertainment</a>
-                            <span>
-                                <i class="fa fa-calender-day"> </i>Jun 31, 2023
-                            </span>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="post">
-                    <img src="assets/images/body-background2.jpg" class="slider-image" alt="Slider Image" title="Slider Image">
-                    <div class="post-info">
-                        <h4><a href="single.php">One day your life will flash before your eyes</a></h4>
-                        <!-- <i class="fa fa-user-circle"> Omisanya Sodiq</i>
-                        &nbsp;
-                        <i class="fa fa-user"> Mar 8, 2023.</i> -->
-                        <div class="user">
-                            <div class="image-container">
-                                <img src="assets/images/body-background2.jpg" alt="User Image">
-                            </div>
-                            <a href="">
-                                <p>Omisanya Sodiq</p>
-                            </a>
-                        </div>
-                        <div class="category">
-                            <a href="">Entertainment</a>
-                            <span>
-                                <i class="fa fa-calender-day"> </i>Jun 31, 2023
-                            </span>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="post">
-                    <img src="assets/images/body-background2.jpg" class="slider-image" alt="Slider Image" title="Slider Image">
-                    <div class="post-info">
-                        <h4><a href="single.php">One day your life will flash before your eyes</a></h4>
-                        <!-- <i class="fa fa-user-circle"> Omisanya Sodiq</i>
-                        &nbsp;
-                        <i class="fa fa-user"> Mar 8, 2023.</i> -->
-                        <div class="user">
-                            <div class="image-container">
-                                <img src="assets/images/body-background2.jpg" alt="User Image">
-                            </div>
-                            <a href="">
-                                <p>Omisanya Sodiq</p>
-                            </a>
-                        </div>
-                        <div class="category">
-                            <a href="">Entertainment</a>
-                            <span>
-                                <i class="fa fa-calender-day"> </i>Jun 31, 2023
-                            </span>
-                        </div>
-
-                    </div>
-                </div>
+                ?>
             </div>
         </div>
 
@@ -277,15 +166,14 @@
                 <div class="section topics">
                     <h2 class="section-title">Topics</h2>
                     <ul>
-                        <li> <a href="">Poems</a></li>
-                        <li> <a href="">Quotes</a></li>
-                        <li> <a href="">Fiction</a></li>
-                        <li> <a href="">Biography</a></li>
-                        <li> <a href="">Motivation</a></li>
-                        <li> <a href="">Inspirations</a></li>
-                        <li> <a href="">Life Lessons</a></li>
-                        <li> <a href="">Self-development</a></li>
-                        <li> <a href="">Car Deals</a></li>
+                    <?php
+                        foreach ($topics as $key => $topic) {
+                    ?>
+                        <li> <a href=""><?php echo $topic['name']; ?></a></li>
+                    <?php
+                        }
+                    ?>
+                        
                     </ul>
                 </div>
             </section>
